@@ -39,15 +39,28 @@ console.log(adjacencyList);
 
 // BFS Breadth First Search
 
-function bfs(start){
-    const queue = [start]
+function bfs(start) {
+  const visited = new Set();
+  const queue = [start];
 
-    while(queue.length > 0) {
-        const airport = queue.shift(); //mutate the queue
-        const destinations = adjacencyList.get(airport);
+  while (queue.length > 0) {
+    const airport = queue.shift(); //mutate the queue
+    const destinations = adjacencyList.get(airport);
 
-        for(const destination of destinations){
-            
-        }
+    for (const destination of destinations) {
+
+      if (destination === "BKK") {
+        console.log("found it!");
+      }
+
+      if (!visited.has(destination)) {
+        console.log(destination);
+        visited.add(destination);
+        queue.push(destination);
+      }
+
     }
+  }
 }
+
+bfs("PHX");
