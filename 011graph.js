@@ -2,7 +2,7 @@
 class Graph {
   // defining node array and adjacent list
   constructor(noOfNodes) {
-    this.noOfVertices = noOfNodes;
+    this.noOfNodes = noOfNodes;
     this.adjacencyList = new Map();
   }
 
