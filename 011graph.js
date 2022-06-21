@@ -1,3 +1,5 @@
+import Queue from "/workspace/GrokkingAlgorithms-codePractice/011queue.js";
+
 // create a graph class
 class Graph {
   // defining node array and adjacent list
@@ -24,12 +26,45 @@ class Graph {
     var get_keys = this.adjacencyList.keys();
 
     for (const i of get_keys) {
-      console.log (i + " -> " + this.adjacencyList.get(i))
+      console.log(i + " -> " + this.adjacencyList.get(i));
     }
-    
   }
 
-  // bfs(v)
+  // function to performs BFS
+  bfs(startingNode) {
+    // create a visited object
+    var visited = {};
+
+    // Create an object for queue
+    var q = new Queue();
+
+    // add the starting node to the queue
+    visited[startingNode] = true;
+    q.enqueue(startingNode);
+
+    // loop until queue is empty
+    while (!q.isEmpty()) {
+      // get the element from the queue
+      var getQueueElement = q.dequeue();
+
+      // passing the current vertex to callback function
+      console.log(getQueueElement);
+
+      // get the adjacent list for current vertex
+      var get_List = this.AdjList.get(getQueueElement);
+
+      // loop through the list and add the element to the queue if it is not processed yet
+      for (var i in get_List) {
+        var neigh = get_List[i];
+
+        if (!visited[neigh]) {
+          visited[neigh] = true;
+          q.enqueue(neigh);
+        }
+      }
+    }
+  }
+
   // dfs(v)
 }
 
@@ -53,4 +88,3 @@ graph.addEdge("E", "C");
 graph.addEdge("C", "F");
 
 graph.printGraph();
-
